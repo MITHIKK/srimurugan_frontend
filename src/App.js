@@ -3,6 +3,22 @@ import './App.css';
 import LoginScreen from './components/LoginScreen';
 import Dashboard from './components/Dashboard';
 
+import axios from 'axios';
+
+// API base URL from environment variable
+const API_URL = process.env.REACT_APP_API_URL;
+
+// Example GET request
+const fetchData = async () => {
+  try {
+    const response = await axios.get(`${API_URL}/api/some-route`);
+    console.log(response.data);
+  } catch (err) {
+    console.error('API error:', err);
+  }
+};
+
+
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [bookings, setBookings] = useState({});

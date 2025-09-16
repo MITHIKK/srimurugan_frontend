@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Calendar from './Calendar';
 import BookingModal from './BookingModal';
 import ConfirmationModal from './ConfirmationModal';
@@ -14,6 +14,38 @@ const Dashboard = ({ onLogout, bookings, setBookings }) => {
   const [notification, setNotification] = useState(null);
 
   const buses = ['VETTAIYAN', 'DHEERAN', 'MAARAN', 'VEERAN'];
+
+  useEffect(() => {
+    fetchBookings();
+  }, []);
+
+  const fetchBookings = async () => {
+    try {
+      const response = await fetch('/api/bookings');
+      if (!response.ok) {
+        throw new Error('Failed to fetch bookings');
+      }
+
+      const data = await response.json();
+      if (data.success) {
+        // Convert the array of bookings into our bookings object format
+        const bookingsObj = {};
+        data.data.forEach(booking => {
+          const date = new Date(booking.date);
+          const dateStr = formatDateKey(date);
+          const key = `${booking.busName}_${dateStr}`;
+          bookingsObj[key] = booking;
+        });
+        setBookings(bookingsObj);
+      }
+    } catch (error) {
+      console.error('Error fetching bookings:', error);
+      setNotification({
+        type: 'error',
+        message: 'Failed to load bookings. Please try refreshing the page.'
+      });
+    }
+  };
 
   const getBooking = (bus, date) => {
     const key = `${bus}_${date}`;

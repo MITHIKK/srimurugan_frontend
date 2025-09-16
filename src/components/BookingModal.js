@@ -121,21 +121,55 @@ const BookingModal = ({
     setFormData(prev => ({ ...prev, balanceAmount: total - advance }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
     const bookingData = {
-      ...formData,
+      busName: currentBus,
+      date: selectedDate,
       pickupTime: formData.pickupNightBefore ? '' : 
         `${formData.pickupHour}:${formData.pickupMinute.padStart(2, '0')} ${formData.pickupPeriod}`,
       nightPickup: formData.pickupNightBefore,
       nightPickupTime: formData.pickupNightBefore ? 
         `${formData.nightHour}:${formData.nightMinute.padStart(2, '0')} PM` : '',
       createdAt: booking?.createdAt || new Date().toISOString(),
-      editChainCreatedAt: editMode ? booking?.createdAt : null
+      editChainCreatedAt: editMode ? booking?.createdAt : null,
+      numberOfDays: formData.numberOfDays,
+      partyName: formData.partyName,
+      phone1: formData.phone1,
+      phone2: formData.phone2,
+      fromLocation: formData.fromLocation,
+      toLocation: formData.toLocation,
+      viaRoute: formData.viaRoute,
+      recommendedBy: formData.recommendedBy,
+      totalAmount: formData.totalAmount,
+      advanceAmount: formData.advanceAmount,
+      balanceAmount: formData.balanceAmount
     };
     
-    onSave(bookingData);
+    try {
+      const response = await fetch('/api/bookings', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(bookingData)
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to save booking');
+      }
+
+      const data = await response.json();
+      if (data.success) {
+        onSave(data.data);
+      } else {
+        throw new Error(data.error || 'Failed to save booking');
+      }
+    } catch (error) {
+      console.error('Error saving booking:', error);
+      alert('Failed to save booking. Please try again.');
+    }
   };
 
   return (

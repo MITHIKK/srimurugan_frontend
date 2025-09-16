@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { formatDateKey, getTamilDate, getTamilMonth } from '../utils/dateUtils';
 import TimePicker from './TimePicker';
 import ConflictWarning from './ConflictWarning';
@@ -148,19 +149,8 @@ const BookingModal = ({
     };
     
     try {
-      const response = await fetch('/api/bookings', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(bookingData)
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to save booking');
-      }
-
-      const data = await response.json();
+      const response = await axios.post('/api/bookings', bookingData);
+      const { data } = response;
       if (data.success) {
         onSave(data.data);
       } else {

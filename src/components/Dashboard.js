@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import Calendar from './Calendar';
 import BookingModal from './BookingModal';
 import ConfirmationModal from './ConfirmationModal';
@@ -21,12 +22,8 @@ const Dashboard = ({ onLogout, bookings, setBookings }) => {
 
   const fetchBookings = async () => {
     try {
-      const response = await fetch('/api/bookings');
-      if (!response.ok) {
-        throw new Error('Failed to fetch bookings');
-      }
-
-      const data = await response.json();
+      const response = await axios.get('/api/bookings');
+      const { data } = response;
       if (data.success) {
         // Convert the array of bookings into our bookings object format
         const bookingsObj = {};

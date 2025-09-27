@@ -26,6 +26,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 100;
+  overflow-x: hidden;
 }
 
 .header-content {
@@ -136,14 +137,31 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .app-header {
+    padding: 0.75rem 1rem;
+  }
+  
   .header-content {
     flex-direction: column;
     text-align: center;
-    padding: 1rem;
+    padding: 0;
+    gap: 0.75rem;
   }
   
   .header-content h1 {
     font-size: 2rem;
+  }
+  
+  .header-actions {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
+  .header-actions button {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    min-width: auto;
   }
   
   .main-content {
@@ -157,11 +175,33 @@ body {
 }
 
 @media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+  
+  .app-header {
+    padding: 0.5rem;
+  }
+  
   .header-content h1 {
     font-size: 1.5rem;
   }
   
   .header-content p {
-    font-size: 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .header-actions {
+    width: 100%;
+  }
+  
+  .header-actions button {
+    flex: 1;
+    padding: 0.6rem 0.8rem;
+    font-size: 0.8rem;
+  }
+  
+  .main-content {
+    padding: 0.5rem;
   }
 }

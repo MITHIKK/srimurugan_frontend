@@ -27,19 +27,6 @@ const BusPage = () => {
 
   return (
     <div className={`bus-page bus-page-${busName.toLowerCase()}`}>
-      <div className="bus-page-header">
-        <button 
-          className="back-btn"
-          onClick={() => navigate('/')}
-        >
-          ← Back to Home
-        </button>
-        <div className="bus-title">
-          <h1 style={{ color: bus.color }}>🚌 {bus.name}</h1>
-          <p>Booking Management</p>
-        </div>
-      </div>
-
       <div className="bus-page-content">
         <BusCalendar
           busName={bus.name}

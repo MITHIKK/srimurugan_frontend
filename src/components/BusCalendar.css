@@ -510,53 +510,170 @@ body {
 }
 
 @media (max-width: 480px) {
+    .bus-calendar-container {
+        padding: 0;
+    }
+    
     .bus-header {
-        padding: 1rem;
+        padding: 0.75rem;
     }
     
     .bus-header h2 {
-        font-size: 1.25rem;
+        font-size: 1.1rem;
     }
     
     .calendar-wrapper {
-        padding: 1rem;
+        padding: 0.5rem;
     }
     
-    .react-calendar__navigation {
-        height: 50px;
-        padding: 0 0.75rem;
+    .calendar-navigation {
+        height: auto;
+        padding: 0.5rem;
         flex-direction: column;
         gap: 0.5rem;
     }
     
-    .react-calendar__navigation__label {
-        font-size: 1.1rem;
+    .month-display {
         order: -1;
     }
     
-    .react-calendar__navigation button {
-        min-width: 80px;
-        padding: 0.5rem 1rem;
-        font-size: 0.8rem;
+    .month-title {
+        font-size: 1.1rem;
     }
     
-    .react-calendar__tile {
-        min-height: 70px;
-        padding: 0.4rem;
+    .tamil-month-title {
+        font-size: 0.75rem;
+        padding: 0.15rem 0.5rem;
     }
     
-    .english-date {
+    .nav-btn {
+        min-width: 70px;
+        padding: 0.4rem 0.8rem;
+        font-size: 0.75rem;
+        height: 35px;
+    }
+    
+    .nav-icon {
         font-size: 1rem;
     }
     
-    .tamil-info {
-        font-size: 0.65rem;
-        padding: 0.15rem 0.3rem;
+    .nav-text {
+        font-size: 0.75rem;
     }
     
-    .react-calendar__month-view__weekdays__weekday {
-        padding: 0.75rem 0.25rem;
+    .weekday-header {
+        padding: 0.5rem 0.2rem;
+        font-size: 0.7rem;
+    }
+    
+    .calendar-day {
+        min-height: 80px;
+        padding: 0.3rem;
+    }
+    
+    .day-number {
+        font-size: 1.1rem;
+    }
+    
+    .tamil-date {
+        font-size: 0.6rem;
+        padding: 0.1rem 0.25rem;
+        margin-bottom: 0.15rem;
+    }
+    
+    .tamil-day {
+        font-size: 0.55rem;
+        margin-bottom: 0.3rem;
+    }
+    
+    .destination {
+        font-size: 0.65rem;
+    }
+    
+    .days-count {
+        font-size: 0.55rem;
+        padding: 0.1rem 0.2rem;
+    }
+    
+    .night-pickup-indicator {
+        font-size: 0.5rem;
+        padding: 0.15rem 0.3rem;
+        bottom: 0.25rem;
+        right: 0.25rem;
+    }
+    
+    .today-badge {
+        font-size: 0.55rem;
+        padding: 0.15rem 0.3rem;
+        top: 0.25rem;
+        right: 0.25rem;
+    }
+    
+    .calendar-legend {
+        flex-wrap: wrap;
+        gap: 15px;
+        padding: 1rem 0.5rem;
+    }
+    
+    .legend-item {
         font-size: 0.75rem;
+    }
+    
+    .legend-color {
+        width: 12px;
+        height: 12px;
+    }
+}
+
+@media (max-width: 360px) {
+    .bus-header h2 {
+        font-size: 1rem;
+    }
+    
+    .month-title {
+        font-size: 1rem;
+    }
+    
+    .calendar-day {
+        min-height: 70px;
+        padding: 0.25rem;
+    }
+    
+    .day-number {
+        font-size: 1rem;
+    }
+    
+    .tamil-date {
+        font-size: 0.55rem;
+    }
+    
+    .tamil-day {
+        font-size: 0.5rem;
+    }
+    
+    .weekday-header {
+        padding: 0.4rem 0.1rem;
+        font-size: 0.65rem;
+    }
+    
+    .nav-btn {
+        min-width: 60px;
+        padding: 0.3rem 0.6rem;
+        font-size: 0.7rem;
+    }
+    
+    .calendar-legend {
+        gap: 10px;
+        padding: 0.75rem 0.25rem;
+    }
+    
+    .legend-item {
+        font-size: 0.7rem;
+    }
+    
+    .legend-color {
+        width: 10px;
+        height: 10px;
     }
 }
 

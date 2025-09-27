@@ -55,22 +55,14 @@ const BookingForm = ({ busName, date, onSubmit, onClose, loading, editingBooking
   const validateForm = () => {
     const newErrors = {};
     
-    if (!formData.partyName.trim()) {
-      newErrors.partyName = 'Party name is required';
-    }
-    
-    if (!formData.partyPhone.trim()) {
-      newErrors.partyPhone = 'Phone number is required';
-    } else if (formData.partyPhone.length !== 10) {
-      newErrors.partyPhone = 'Phone number must be 10 digits';
-    }
-    
-    if (!formData.from.trim()) {
-      newErrors.from = 'From location is required';
-    }
-    
+    // Only 'To' field is mandatory
     if (!formData.to.trim()) {
-      newErrors.to = 'To location is required';
+      newErrors.to = 'Destination (To) is required';
+    }
+    
+    // Optional validations - only validate if fields are filled
+    if (formData.partyPhone.trim() && formData.partyPhone.length !== 10) {
+      newErrors.partyPhone = 'Phone number must be 10 digits';
     }
     
     if (formData.beforeNightPickup && !formData.pickupTime) {
@@ -153,7 +145,7 @@ const BookingForm = ({ busName, date, onSubmit, onClose, loading, editingBooking
           <div className="form-section">
             <h3>Party Details</h3>
             <div className="form-group">
-              <label htmlFor="partyName">Party Name *</label>
+              <label htmlFor="partyName">Party Name</label>
               <input
                 type="text"
                 id="partyName"
@@ -168,7 +160,7 @@ const BookingForm = ({ busName, date, onSubmit, onClose, loading, editingBooking
             </div>
 
             <div className="form-group">
-              <label htmlFor="partyPhone">Party Phone Number *</label>
+              <label htmlFor="partyPhone">Party Phone Number</label>
               <input
                 type="text"
                 id="partyPhone"
@@ -188,7 +180,7 @@ const BookingForm = ({ busName, date, onSubmit, onClose, loading, editingBooking
             <h3>Route Details</h3>
             <div className="form-row">
               <div className="form-group">
-                <label htmlFor="from">From *</label>
+                <label htmlFor="from">From</label>
                 <input
                   type="text"
                   id="from"
@@ -390,15 +382,18 @@ const BookingForm = ({ busName, date, onSubmit, onClose, loading, editingBooking
           <div className="confirmation-details">
             <div className="detail-group">
               <h4>Party Information</h4>
-              <p><strong>Name:</strong> {formData.partyName}</p>
-              <p><strong>Phone:</strong> {formData.partyPhone}</p>
-              {formData.recommendedBy && <p><strong>Recommended by:</strong> {formData.recommendedBy}</p>}
+              {formData.partyName.trim() && <p><strong>Name:</strong> {formData.partyName}</p>}
+              {formData.partyPhone.trim() && <p><strong>Phone:</strong> {formData.partyPhone}</p>}
+              {formData.recommendedBy.trim() && <p><strong>Recommended by:</strong> {formData.recommendedBy}</p>}
+              {!formData.partyName.trim() && !formData.partyPhone.trim() && !formData.recommendedBy.trim() && (
+                <p><em>No party information provided</em></p>
+              )}
             </div>
 
             <div className="detail-group">
               <h4>Trip Details</h4>
               <p><strong>Bus:</strong> {busName}</p>
-              <p><strong>Route:</strong> {formData.from} {formData.via ? `via ${formData.via}` : ''} → {formData.to}</p>
+              <p><strong>Route:</strong> {formData.from || 'Not specified'} {formData.via ? `via ${formData.via}` : ''} → {formData.to}</p>
               <p><strong>Duration:</strong> {formData.numberOfDays} day{formData.numberOfDays > 1 ? 's' : ''}</p>
               <p><strong>Start Date:</strong> {date.toLocaleDateString()}</p>
               <p><strong>End Date:</strong> {new Date(date.getTime() + (formData.numberOfDays - 1) * 24 * 60 * 60 * 1000).toLocaleDateString()}</p>
@@ -407,12 +402,12 @@ const BookingForm = ({ busName, date, onSubmit, onClose, loading, editingBooking
               )}
             </div>
 
-            {(formData.totalAmount || formData.advance) && (
+            {(formData.totalAmount.trim() || formData.advance.trim()) && (
               <div className="detail-group">
                 <h4>Financial Details</h4>
-                {formData.totalAmount && <p><strong>Total Amount:</strong> ₹{formData.totalAmount}</p>}
-                {formData.advance && <p><strong>Advance Paid:</strong> ₹{formData.advance}</p>}
-                {formData.totalAmount && formData.advance && (
+                {formData.totalAmount.trim() && <p><strong>Total Amount:</strong> ₹{formData.totalAmount}</p>}
+                {formData.advance.trim() && <p><strong>Advance Paid:</strong> ₹{formData.advance}</p>}
+                {formData.totalAmount.trim() && formData.advance.trim() && (
                   <p><strong>Balance Due:</strong> ₹{calculateBalance()}</p>
                 )}
               </div>

@@ -1,0 +1,1014 @@
+/* 🎯 BRAND NEW REALISTIC CALENDAR - FRESH MODERN DESIGN */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+/* ✨ CSS Variables for Consistent Design */
+:root {
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --success-gradient: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+    --danger-gradient: linear-gradient(135deg, #fc4a1a 0%, #f7b733 100%);
+    --warning-gradient: linear-gradient(135deg, #fdbb2d 0%, #22c1c3 100%);
+    --purple-gradient: linear-gradient(135deg, #8b5fbf 0%, #b721ff 100%);
+    
+    --shadow-card: 0 8px 32px rgba(31, 38, 135, 0.12);
+    --shadow-hover: 0 15px 35px rgba(31, 38, 135, 0.18);
+    --shadow-strong: 0 20px 40px rgba(31, 38, 135, 0.25);
+    
+    --border-radius-sm: 8px;
+    --border-radius-md: 12px;
+    --border-radius-lg: 16px;
+    --border-radius-xl: 24px;
+    
+    --font-primary: 'Inter', -apple-system, system-ui, sans-serif;
+    --font-accent: 'Space Grotesk', monospace;
+    
+    --text-dark: #1a202c;
+    --text-medium: #4a5568;
+    --text-light: #718096;
+    --bg-white: #ffffff;
+    --bg-gray-50: #f7fafc;
+    --bg-gray-100: #edf2f7;
+    --bg-gray-200: #e2e8f0;
+}
+
+/* 🎨 Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-primary);
+    background: var(--primary-gradient);
+    min-height: 100vh;
+    color: var(--text-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* 📱 Main Container - Full Screen Glass Morphism Effect */
+.bus-calendar-container {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    min-height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
+    animation: slideInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    font-family: var(--font-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 🎯 Bus Header - Premium Design */
+.bus-header {
+    background: var(--primary-gradient);
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+}
+
+.bus-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+    transition: left 0.6s ease;
+}
+
+.bus-header:hover::before {
+    left: 100%;
+}
+
+.bus-header h2 {
+    color: white;
+    font-family: var(--font-accent);
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    letter-spacing: -0.02em;
+}
+
+.selected-date-info {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.95rem;
+    margin-top: 0.5rem;
+    font-weight: 500;
+}
+
+/* 📅 Calendar Wrapper - Modern Spacing */
+.calendar-wrapper {
+    padding: 2.5rem;
+    background: var(--bg-white);
+}
+
+/* 🎨 React Calendar - Complete Redesign */
+.react-calendar {
+    width: 100%;
+    background: transparent;
+    border: none;
+    font-family: var(--font-primary);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+}
+
+/* 🎯 Calendar Navigation - Sleek & Modern */
+.calendar-navigation {
+    display: flex;
+    height: 70px;
+    padding: 0 1.5rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-bottom: none;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+}
+
+.nav-btn {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--border-radius-md);
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0.75rem 1.25rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    min-width: 100px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.react-calendar__navigation button:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.react-calendar__navigation button:active {
+    transform: translateY(0);
+}
+
+.react-calendar__navigation button:disabled {
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.4);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.react-calendar__navigation__label {
+    background: none !important;
+    border: none !important;
+    color: white;
+    font-family: var(--font-accent);
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding: 0 1rem;
+    flex-grow: 1;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: -0.02em;
+}
+
+.react-calendar__navigation__label:hover {
+    transform: scale(1.05);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Hide year navigation */
+.react-calendar__navigation__next2-button,
+.react-calendar__navigation__prev2-button {
+    display: none !important;
+}
+
+/* 📅 Weekdays Header - Gradient Design */
+.react-calendar__month-view__weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 0;
+    margin: 0;
+}
+
+.react-calendar__month-view__weekdays__weekday {
+    background: transparent;
+    color: white;
+    padding: 1rem 0.5rem;
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: none;
+    position: relative;
+}
+
+.react-calendar__month-view__weekdays__weekday::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+}
+
+/* 📅 Calendar Grid - Modern Layout */
+.react-calendar__month-view__days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+    background: var(--bg-gray-100);
+    padding: 2px;
+}
+
+/* 📅 Individual Date Tiles - Realistic Design */
+.react-calendar__tile {
+    background: var(--bg-white);
+    border: none;
+    border-radius: var(--border-radius-sm);
+    min-height: 120px;
+    padding: 0.75rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    overflow: hidden;
+    font-family: var(--font-primary);
+}
+
+.react-calendar__tile::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: transparent;
+    transition: all 0.3s ease;
+    z-index: 0;
+}
+
+.react-calendar__tile:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: var(--shadow-hover);
+    z-index: 10;
+}
+
+.react-calendar__tile:hover::before {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+}
+
+/* 📅 Date Content Layout */
+.tile-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+    padding-top: 0.5rem;
+}
+
+/* 📅 English Date - Primary Display */
+.english-date {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+    font-family: var(--font-accent);
+}
+
+/* 📅 Tamil Information - Secondary Display */
+.tamil-info {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-medium);
+    text-align: center;
+    line-height: 1.2;
+    background: var(--bg-gray-50);
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--border-radius-sm);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+/* 📅 Date States - Color Coded */
+
+/* Today */
+.react-calendar__tile--now {
+    background: linear-gradient(135deg, #fdbb2d 0%, #22c1c3 100%) !important;
+}
+
+.react-calendar__tile--now .english-date {
+    color: white !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.react-calendar__tile--now .tamil-info {
+    background: rgba(255, 255, 255, 0.2) !important;
+    color: white !important;
+}
+
+/* Active Selection */
+.react-calendar__tile--active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: var(--shadow-strong);
+}
+
+.react-calendar__tile--active .english-date {
+    color: white !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.react-calendar__tile--active .tamil-info {
+    background: rgba(255, 255, 255, 0.2) !important;
+    color: white !important;
+}
+
+/* Available Dates */
+.available-date {
+    background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%) !important;
+    border-left: 4px solid #16a34a !important;
+}
+
+.available-date .english-date {
+    color: #15803d !important;
+}
+
+.available-date .tamil-info {
+    background: rgba(22, 163, 74, 0.1) !important;
+    color: #16a34a !important;
+}
+
+.available-date:hover {
+    background: linear-gradient(135deg, #bbf7d0 0%, #86efac 100%) !important;
+}
+
+/* Booked Dates */
+.booked-date {
+    background: linear-gradient(135deg, #fecaca 0%, #fca5a5 100%) !important;
+    border-left: 4px solid #dc2626 !important;
+}
+
+.booked-date .english-date {
+    color: #dc2626 !important;
+}
+
+.booked-date .tamil-info {
+    background: rgba(220, 38, 38, 0.1) !important;
+    color: #dc2626 !important;
+}
+
+.booked-date:hover {
+    background: linear-gradient(135deg, #fca5a5 0%, #f87171 100%) !important;
+}
+
+/* Past Dates */
+.past-date {
+    background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%) !important;
+    cursor: not-allowed !important;
+    opacity: 0.6 !important;
+}
+
+.past-date .english-date {
+    color: #94a3b8 !important;
+}
+
+.past-date .tamil-info {
+    background: rgba(148, 163, 184, 0.1) !important;
+    color: #cbd5e1 !important;
+}
+
+.past-date:hover {
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* Neighboring Month Dates */
+.react-calendar__tile--neighboringMonth {
+    opacity: 0.4;
+    background: var(--bg-gray-50) !important;
+}
+
+.react-calendar__tile--neighboringMonth:hover {
+    transform: none;
+    cursor: default;
+}
+
+/* 🌙 Special Indicators */
+.booking-indicator {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    font-size: 1rem;
+    z-index: 2;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-5px); }
+    60% { transform: translateY(-3px); }
+}
+
+.before-night-indicator {
+    position: absolute;
+    bottom: 2px;
+    left: 2px;
+    right: 2px;
+    height: 4px;
+    background: linear-gradient(90deg, #fc4a1a 0%, #f7b733 100%);
+    border-radius: 2px;
+    animation: pulse-glow 2s infinite;
+}
+
+@keyframes pulse-glow {
+    0%, 100% { opacity: 1; box-shadow: 0 0 5px rgba(252, 74, 26, 0.5); }
+    50% { opacity: 0.7; box-shadow: 0 0 15px rgba(252, 74, 26, 0.8); }
+}
+
+/* 📱 Responsive Design */
+@media (max-width: 768px) {
+    .bus-header {
+        padding: 1.5rem;
+    }
+    
+    .bus-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .calendar-wrapper {
+        padding: 1.5rem;
+    }
+    
+    .react-calendar__navigation {
+        height: 60px;
+        padding: 0 1rem;
+    }
+    
+    .react-calendar__navigation__label {
+        font-size: 1.25rem;
+    }
+    
+    .react-calendar__tile {
+        min-height: 90px;
+        padding: 0.5rem;
+    }
+    
+    .english-date {
+        font-size: 1.25rem;
+    }
+    
+    .tamil-info {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .bus-header {
+        padding: 1rem;
+    }
+    
+    .bus-header h2 {
+        font-size: 1.25rem;
+    }
+    
+    .calendar-wrapper {
+        padding: 1rem;
+    }
+    
+    .react-calendar__navigation {
+        height: 50px;
+        padding: 0 0.75rem;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .react-calendar__navigation__label {
+        font-size: 1.1rem;
+        order: -1;
+    }
+    
+    .react-calendar__navigation button {
+        min-width: 80px;
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+    }
+    
+    .react-calendar__tile {
+        min-height: 70px;
+        padding: 0.4rem;
+    }
+    
+    .english-date {
+        font-size: 1rem;
+    }
+    
+    .tamil-info {
+        font-size: 0.65rem;
+        padding: 0.15rem 0.3rem;
+    }
+    
+    .react-calendar__month-view__weekdays__weekday {
+        padding: 0.75rem 0.25rem;
+        font-size: 0.75rem;
+    }
+}
+
+/* ✨ Loading Animation */
+@keyframes shimmer {
+    0% { background-position: -200px 0; }
+    100% { background-position: calc(200px + 100%) 0; }
+}
+
+.loading-shimmer {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200px 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+/* 🎯 Focus States for Accessibility */
+.react-calendar__tile:focus {
+    outline: 3px solid rgba(102, 126, 234, 0.5);
+    outline-offset: 2px;
+    z-index: 100;
+}
+
+.react-calendar__navigation button:focus {
+    outline: 2px solid rgba(255, 255, 255, 0.5);
+    outline-offset: 2px;
+}
+
+/* 📅 Custom Calendar Styles - NEW COMPONENTS */
+
+/* Navigation Buttons */
+.nav-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.nav-btn:active {
+    transform: translateY(0);
+}
+
+.nav-btn:disabled {
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.4);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.nav-icon {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.nav-text {
+    font-size: 0.9rem;
+}
+
+/* Month Display */
+.month-display {
+    text-align: center;
+    flex-grow: 1;
+}
+
+.month-title {
+    color: white;
+    font-family: var(--font-accent);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: -0.02em;
+}
+
+.tamil-month-title {
+    color: #fbbf24;
+    background: rgba(251, 191, 36, 0.15);
+    font-size: 0.9rem;
+    margin: 0.25rem 0 0 0;
+    font-weight: 600;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(251, 191, 36, 0.3);
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+/* Weekdays Header */
+.calendar-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 0;
+    margin: 0;
+}
+
+.weekday-header {
+    background: transparent;
+    color: white;
+    padding: 1rem 0.5rem;
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: none;
+    position: relative;
+}
+
+.weekday-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+}
+
+.weekend-header {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.weekday-name {
+    font-weight: 600;
+}
+
+/* Calendar Grid */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+    background: var(--bg-gray-100);
+    padding: 2px;
+    border-radius: 0 0 var(--border-radius-lg) var(--border-radius-lg);
+}
+
+/* Calendar Day Cards - Modern Design */
+.calendar-day {
+    background: var(--bg-white);
+    border: none;
+    border-radius: var(--border-radius-sm);
+    min-height: 120px;
+    padding: 0.75rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    overflow: hidden;
+    font-family: var(--font-primary);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.calendar-day:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: var(--shadow-hover);
+    z-index: 10;
+}
+
+.calendar-day::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: transparent;
+    transition: all 0.3s ease;
+    z-index: 0;
+}
+
+/* Day Number - Primary Display */
+.day-number {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+    font-family: var(--font-accent);
+    z-index: 1;
+}
+
+/* Tamil Date Info - Enhanced Visibility */
+.tamil-date {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #7c3aed;
+    background: rgba(124, 58, 237, 0.1);
+    padding: 0.2rem 0.4rem;
+    border-radius: var(--border-radius-sm);
+    margin-bottom: 0.25rem;
+    z-index: 1;
+    border: 1px solid rgba(124, 58, 237, 0.2);
+    transition: all 0.3s ease;
+}
+
+.tamil-day {
+    font-size: 0.65rem;
+    color: var(--text-light);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    z-index: 1;
+}
+
+/* Booking Details */
+.booking-details {
+    margin-top: auto;
+    width: 100%;
+    z-index: 1;
+}
+
+.destination {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.25rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.days-count {
+    font-size: 0.65rem;
+    color: var(--text-medium);
+    background: rgba(102, 126, 234, 0.1);
+    padding: 0.15rem 0.3rem;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+/* Night Pickup Indicator */
+.night-pickup-indicator {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 0.2rem 0.4rem;
+    border-radius: 6px;
+    font-size: 0.6rem;
+    font-weight: 600;
+    z-index: 2;
+    animation: pulse-glow 2s infinite;
+}
+
+/* Today Badge */
+.today-badge {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+    color: white;
+    padding: 0.2rem 0.5rem;
+    border-radius: 8px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px rgba(255, 107, 107, 0.3);
+    z-index: 2;
+}
+
+/* Date State Styles */
+.calendar-day.current-month.available {
+    background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+    border-left: 4px solid #16a34a;
+}
+
+.calendar-day.current-month.available .day-number {
+    color: #15803d;
+}
+
+.calendar-day.current-month.available .tamil-date {
+    background: rgba(124, 58, 237, 0.15);
+    color: #7c3aed;
+    border-color: rgba(124, 58, 237, 0.3);
+}
+
+.calendar-day.current-month.available:hover {
+    background: linear-gradient(135deg, #bbf7d0 0%, #86efac 100%);
+}
+
+.calendar-day.current-month.booked {
+    background: linear-gradient(135deg, #fecaca 0%, #fca5a5 100%);
+    border-left: 4px solid #dc2626;
+}
+
+.calendar-day.current-month.booked .day-number {
+    color: #dc2626;
+}
+
+.calendar-day.current-month.booked .tamil-date {
+    background: rgba(124, 58, 237, 0.15);
+    color: #7c3aed;
+    border-color: rgba(124, 58, 237, 0.3);
+}
+
+.calendar-day.current-month.booked:hover {
+    background: linear-gradient(135deg, #fca5a5 0%, #f87171 100%);
+}
+
+.calendar-day.current-month.today {
+    background: linear-gradient(135deg, #fdbb2d 0%, #22c1c3 100%);
+    border-left: 4px solid #f59e0b;
+}
+
+.calendar-day.current-month.today .day-number {
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.calendar-day.current-month.today .tamil-date {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.calendar-day.current-month.today .tamil-day {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.calendar-day.current-month.past {
+    background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.calendar-day.current-month.past .day-number {
+    color: #94a3b8;
+}
+
+.calendar-day.current-month.past .tamil-date {
+    background: rgba(148, 163, 184, 0.1);
+    color: #cbd5e1;
+}
+
+.calendar-day.current-month.past:hover {
+    transform: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.calendar-day.current-month.selected {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: var(--shadow-strong);
+    border-left: 4px solid #4338ca;
+}
+
+.calendar-day.current-month.selected .day-number {
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.calendar-day.current-month.selected .tamil-date {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.calendar-day.current-month.selected .tamil-day {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Other Month Dates */
+.calendar-day.other-month {
+    opacity: 0.4;
+    background: var(--bg-gray-50);
+    cursor: default;
+}
+
+.calendar-day.other-month:hover {
+    transform: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.calendar-day.other-month .day-number {
+    color: var(--text-light);
+}
+
+.calendar-day.other-month .tamil-date {
+    color: var(--text-light);
+    background: rgba(113, 128, 150, 0.1);
+}
+
+/* Calendar Legend */
+.calendar-legend {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    padding: 1.5rem;
+    background: var(--bg-white);
+    border-radius: 0 0 var(--border-radius-lg) var(--border-radius-lg);
+    margin-top: 1rem;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.legend-color {
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    border: 2px solid transparent;
+}
+
+.legend-color.available {
+    background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+    border-color: #16a34a;
+}
+
+.legend-color.booked {
+    background: linear-gradient(135deg, #fecaca 0%, #fca5a5 100%);
+    border-color: #dc2626;
+}
+
+.legend-color.today {
+    background: linear-gradient(135deg, #fdbb2d 0%, #22c1c3 100%);
+    border-color: #f59e0b;
+}
+
+.legend-color.past {
+    background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+    border-color: #94a3b8;
+}
+
+/* 🎨 Print Styles */
+@media print {
+    .bus-calendar-container {
+        background: white;
+        box-shadow: none;
+    }
+    
+    .bus-header {
+        background: #333 !important;
+        color: white !important;
+    }
+    
+    .calendar-day {
+        border: 1px solid #ddd;
+        box-shadow: none;
+    }
+    
+    .nav-btn {
+        display: none;
+    }
+}

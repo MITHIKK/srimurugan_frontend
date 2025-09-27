@@ -1,0 +1,179 @@
+/* BusPage Styles */
+.bus-page {
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.bus-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  z-index: 1;
+}
+
+.bus-page > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Bus-specific backgrounds */
+.bus-page-vettaiyan {
+  background-image: url('../assets/vettaiyan.jpg');
+}
+
+.bus-page-dheeran {
+  background-image: url('../assets/dheeran.jpg');
+}
+
+.bus-page-maaran {
+  background-image: url('../assets/maara.jpg');
+}
+
+.bus-page-veeran {
+  background-image: url('../assets/veeran.jpg');
+}
+
+.bus-page-header {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.back-btn {
+  background: rgba(102, 126, 234, 0.1);
+  color: #667eea;
+  border: 2px solid rgba(102, 126, 234, 0.2);
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.back-btn:hover {
+  background: #667eea;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.bus-title {
+  flex: 1;
+  text-align: center;
+}
+
+.bus-title h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.bus-title p {
+  margin: 0;
+  color: #4a5568;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.bus-page-content {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.error-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  text-align: center;
+}
+
+.error-page h1 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.error-page button {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 1rem 2rem;
+  border-radius: 15px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.error-page button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .bus-page {
+    background-attachment: scroll;
+    background-size: cover;
+  }
+  
+  .bus-page-header {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  .bus-title h1 {
+    font-size: 2rem;
+  }
+  
+  .bus-page-content {
+    padding: 1rem;
+  }
+  
+  .back-btn {
+    align-self: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .bus-page-header {
+    padding: 1rem;
+  }
+  
+  .bus-title h1 {
+    font-size: 1.8rem;
+  }
+  
+  .error-page h1 {
+    font-size: 2rem;
+  }
+}
